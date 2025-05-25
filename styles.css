@@ -162,6 +162,13 @@ body {
     margin-top: 40px;
 }
 
+/* 在較大螢幕上讓成員排成一排 */
+@media (min-width: 1200px) {
+    .team-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 .team-card {
     background-color: var(--card-bg);
     border-radius: 15px;
