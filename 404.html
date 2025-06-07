@@ -1,6 +1,152 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-TW">
 <head>
-<meta http-equiv="refresh" content="0;url=https://xiaosargua.dpdns.org/" />
+<meta charset="UTF-8">
+<title>404 Not Found</title>
+<meta http-equiv="refresh" content="2;url=/index.html" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap');
+  
+  :root {
+    --primary-color: #ff0000;
+    --text-color: #333;
+    --bg-color: #f8f8f8;
+    --card-bg: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --primary-color: #ff5252;
+      --text-color: #f0f0f0;
+      --bg-color: #121212;
+      --card-bg: #1e1e1e;
+      --shadow-color: rgba(0, 0, 0, 0.3);
+    }
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Noto Sans TC', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    padding: 50px 20px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .container {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    max-width: 600px;
+    width: 100%;
+    animation: fadeIn 0.8s ease;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+  }
+  
+  h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+  }
+  
+  .message {
+    margin: 30px 0;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  .message p {
+    margin: 10px 0;
+  }
+  
+  .redirect-info {
+    margin-top: 30px;
+    font-size: 16px;
+    color: #666;
+    background-color: rgba(255, 0, 0, 0.05);
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+  }
+  
+  .redirect-info p {
+    margin: 5px 0;
+  }
+  
+  .countdown {
+    font-weight: bold;
+    color: var(--primary-color);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>404 Not Found</h1>
+    <div class="message">
+      <p>抱歉，你要查看的頁面還沒準備好唷！請稍後再試。</p>
+      <p>Sorry, the page you are trying to view is not ready yet!</p>
+    </div>
+    <div class="redirect-info">
+      <p><span class="countdown">2</span> 秒後將自動跳轉到首頁...</p>
+      <p>You will be redirected to the homepage in <span class="countdown">5</span> seconds...</p>
+    </div>
+  </div>
+  
+  <script>
+    // 倒數計時功能
+    let countdown = 2;
+    const countdownElements = document.querySelectorAll('.countdown');
+    
+    const timer = setInterval(() => {
+      countdown--;
+      countdownElements.forEach(el => {
+        el.textContent = countdown;
+        el.style.animation = 'pulse 1s';
+        setTimeout(() => {
+          el.style.animation = '';
+        }, 1000);
+      });
+      
+      if (countdown <= 0) {
+        clearInterval(timer);
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
